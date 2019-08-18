@@ -38,22 +38,45 @@ git clone git@github.com:prettykernel/study.git && cd study
 
 编写代码
 
-git add . && git commit -m ''
+git add . && git commit -m ' '
 
 git push
 
 mkdir myapp && cd myapp
 
-# 新建页面
+# 新建页面，页面名不要以数字开头。
+# 初次执行 umi generate page/umi g page 时，会在当前工作目录 myapp/ 下新建一个 pages/ 子目录，并在其中新建 index.js 和 index.css 两个文件。
 umi generate page index
 
-# 本地开发
-umi dev
+# 因为 pages/ 子目录已经存在，所以直接在其中新建 users.js 和 users.css 两个文件。
+umi g page users
 
-# 构建上线
+# 本地开发。
+# 初次执行 umi dev 时，会在 pages/ 子目录下新建一个 .umi/ 子目录，并在其中新建 history.js，polyfills.js，router.js，umi.js，umiExports.js 几个文件。
+# 然后，自动执行 Webpack，编译整个项目。
+# 接下来，启动 development server，用于与浏览器交互。
+# 最后，浏览器自动打开 http://localhost:8000/。
+# 之后，每当修改了源码文件，都会自动重新构建，更新 .umi/ 下的相应文件，并自动刷新浏览器。浏览器控制台输出 hotModuleReplacement.js:197 [HMR] Detected local css modules. Reload all css.
+umi dev
+# Ctrl + C 终止 umi dev 进程时，浏览器控制台输出 webpackHotDevClient.js:66 The development server has disconnected.
+
+
+# 开发完成后，需要构建，用于发布上线。
+# 初次执行 umi build 时，会在 myapp/ 下新建一个 dist/ 子目录。
+# 然后，自动执行 Webpack，编译出三个文件 index.html，umi.css，umi.js，并写入 dist/ 中。
 umi build
 
-
+[z@localhost myapp]$ tree .
+.
+├── dist
+│   ├── index.html
+│   ├── umi.css
+│   └── umi.js
+└── pages
+    ├── index.css
+    ├── index.js
+    ├── users.css
+    └── users.js
 
 
 
