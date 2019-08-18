@@ -4,7 +4,11 @@ git config --global user.name "prettykernel"
 
 git config --global user.email "prettykernel@gmail.com"
 
-ssh-add /d/sshkey备份/.ssh/id_rsa
+cp /d/sshkey备份/.ssh/id_rsa /home/z/.ssh/id_rsa
+
+chmod 400 /home/z/.ssh/id_rsa
+
+ssh -vT git@github.com
 
 git clone git@github.com:prettykernel/study.git
 
@@ -19,7 +23,6 @@ git push
 
 
 
-
 npm config set registry "https://registry.npm.taobao.org"
 
 mkdir global_node_modules
@@ -29,25 +32,11 @@ npm config set prefix "~/global_node_modules"
 # yarn 会被安装到 /home/z/global_node_modules/lib/node_modules/yarn/ 中
 npm i -g yarn
 
-npm list -g
+npm i -g umi            # yarn global add umi
 
-# 所有登陆方式都会读取的文件只有 /etc/profile 和 /etc/bashrc
-# 写入两者都需要 root 权限
-su
-cat >>/etc/profile <<EOF
-export PATH=\$PATH:~/global_node_modules/bin
-EOF
-exit
-source /etc/bashrc
+npm list -g --depth=0   # yarn global list --depth=0
 
-yarn -v
-
-
-
-
-npm i -g umi   # yarn global add umi
-
-npm list -g    # yarn global list
+npm cache clean -f && npm cache verify
 
 umi -v
 
@@ -63,11 +52,22 @@ umi dev
 umi build
 
 
-# 受 npm config set prefix 影响。输出 /home/z/global_node_modules/bin
-yarn global bin
 
 
-# npm 缓存路径。/home/z/.npm
+# 所有登陆方式都会读取的文件只有 /etc/profile 和 /etc/bashrc，但 /etc/profile 在 bash 启动之前执行，
+# 所以自定义的 bash 配置推荐放入 /etc/bashrc。
+# 写入两者都需要 root 权限。
+su
+cat >>/etc/bashrc <<EOF
+export PATH=\$PATH:~/global_node_modules/bin
+EOF
+exit
+source /etc/bashrc
+
+
+
+
+# npm 缓存路径。默认是 /home/z/.npm。
 npm config get cache
 
 # 默认输出 /usr。npm i -g 会将包安装在该目录下的 lib/node_modules/ 子目录中。
@@ -85,19 +85,20 @@ yarn global dir
 # yarn 虽然会把全局包安装到 yarn global dir 制定的目录，但会在 `npm config set prefix`/bin 下生成安装的包中包含的所有可执行文件的符号链接。
 yarn global bin
 
-# 改变 yarn global add 的安装目录
+# 改变 yarn global add 的安装目录。默认为 undefined。
 # yarn global add 会在该目录下生成 node_modules\.bin 目录
-yarn config set global-folder "你的磁盘路径"
+yarn config set global-folder "目录"
 
 # yarn 缓存路径。/home/z/.cache/yarn/v4
 yarn cache dir
-# 改变 yarn 缓存路径
-yarn config set cache-folder "你的磁盘路径"
+# 改变 yarn 缓存路径。默认为 undefined。
+yarn config set cache-folder "目录"
+
+yarn cache clean
+yarn cache list
 
 
 
-
-yarn/npm -g 默认安装路径？ 如何修改
 
 
 
