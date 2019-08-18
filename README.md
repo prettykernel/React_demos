@@ -4,30 +4,21 @@ git config --global user.name "prettykernel"
 
 git config --global user.email "prettykernel@gmail.com"
 
-cp /d/sshkey备份/.ssh/id_rsa /home/z/.ssh/id_rsa
-
-chmod 400 /home/z/.ssh/id_rsa
+cp /d/sshkey备份/.ssh/id_rsa /home/z/.ssh/id_rsa && chmod 400 /home/z/.ssh/id_rsa
 
 ssh -vT git@github.com
-
-git clone git@github.com:prettykernel/study.git
-
-cd study
-
-编写代码
-
-git add . && git commit -m ''
-
-git push
-
-
-
 
 npm config set registry "https://registry.npm.taobao.org"
 
 mkdir global_node_modules
 
 npm config set prefix "~/global_node_modules"
+
+# bash 的所有启动方式都会读取的文件只有 /etc/bashrc 和 ~/.bashrc，但写入 /etc/bashrc 需要 root 权限，所以自定义的 bash 配置推荐放入 ~/.bashrc。
+cat >>~/.bashrc <<EOF
+export PATH=\$PATH:~/global_node_modules/bin
+EOF
+source ~/.bashrc
 
 # yarn 会被安装到 /home/z/global_node_modules/lib/node_modules/yarn/ 中
 npm i -g yarn
@@ -39,6 +30,17 @@ npm list -g --depth=0   # yarn global list --depth=0
 npm cache clean -f && npm cache verify
 
 umi -v
+
+
+
+
+git clone git@github.com:prettykernel/study.git && cd study
+
+编写代码
+
+git add . && git commit -m ''
+
+git push
 
 mkdir myapp && cd myapp
 
@@ -52,17 +54,6 @@ umi dev
 umi build
 
 
-
-
-# 所有登陆方式都会读取的文件只有 /etc/profile 和 /etc/bashrc，但 /etc/profile 在 bash 启动之前执行，
-# 所以自定义的 bash 配置推荐放入 /etc/bashrc。
-# 写入两者都需要 root 权限。
-su
-cat >>/etc/bashrc <<EOF
-export PATH=\$PATH:~/global_node_modules/bin
-EOF
-exit
-source /etc/bashrc
 
 
 
