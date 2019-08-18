@@ -66,7 +66,7 @@ umi dev
 # 然后，自动执行 Webpack，编译出三个文件 index.html，umi.css，umi.js，并写入 dist/ 中。
 umi build
 
-[z@localhost myapp]$ tree .
+tree .
 .
 ├── dist
 │   ├── index.html
