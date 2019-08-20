@@ -65,8 +65,11 @@ npm cache clean -f && npm cache verify
 umi -v
 
 
+git remote remove origin
 git remote add origin git@github.com:prettykernel/react_demos.git
 git remote -v
+git add . && git commit -m 'commit log'
+
 git clone git@github.com:prettykernel/react_demos.git && cd react_demos
 
 编写代码
