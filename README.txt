@@ -66,7 +66,7 @@ umi -v
 
 
 git remote add origin git@github.com:prettykernel/react_demos.git
-
+git remote -v
 git clone git@github.com:prettykernel/react_demos.git && cd react_demos
 
 编写代码
