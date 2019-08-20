@@ -1,3 +1,43 @@
+git clone git@github.com:prettykernel/react_demos.git && cd react_demos
+
+编写代码
+
+git add . && git commit -m ' '
+
+再次编写代码
+
+git add . && git commit -m ' '
+
+git push    # 可能需要手工解决冲突
+
+
+
+git remote remove origin
+git remote add origin git@github.com:prettykernel/react_demos.git
+git remote -v
+git add . && git commit -m 'commit log'
+git pull --rebase origin master
+手工解决冲突
+git add . && git commit -m 'commit log'
+git push -u origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # npm 缓存路径。默认是 /home/z/.npm。
 npm config get cache
 
@@ -65,23 +105,7 @@ npm cache clean -f && npm cache verify
 umi -v
 
 
-git remote remove origin
-git remote add origin git@github.com:prettykernel/react_demos.git
-git remote -v
-git add . && git commit -m 'commit log'
-git pull --rebase origin master
-手工解决冲突
-git add . && git commit -m 'commit log'
-git push -u origin master
 
-
-git clone git@github.com:prettykernel/react_demos.git && cd react_demos
-
-编写代码
-
-git add . && git commit -m ' '
-
-git push
 
 mkdir myapp && cd myapp
 
