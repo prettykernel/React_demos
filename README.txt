@@ -1,3 +1,36 @@
+# npm 缓存路径。默认是 /home/z/.npm。
+npm config get cache
+
+# 默认输出 /usr。npm i -g 会将包安装在该目录下的 lib/node_modules/ 子目录中。
+npm config get prefix
+
+
+
+
+# yarn global add 的安装目录，不受 npm config set prefix 影响。默认是 /home/z/.config/yarn/global。
+# 执行 yarn global add umi，会将 umi 包及其所有依赖的包都安装到 /home/z/.config/yarn/global/node_modules/ 下。
+# npm 会把依赖的包安装到 /usr/lib/node_modules/npm/node_modules/ 下。
+yarn global dir
+
+# 可执行文件的软链接，受 npm config set prefix 影响。输出 /home/z/global_node_modules/bin
+# yarn 虽然会把全局包安装到 yarn global dir 制定的目录，但会在 `npm config set prefix`/bin 下生成安装的包中包含的所有可执行文件的符号链接。
+yarn global bin
+
+# 改变 yarn global add 的安装目录。默认为 undefined。
+# yarn global add 会在该目录下生成 node_modules\.bin 目录
+yarn config set global-folder "目录"
+
+# yarn 缓存路径。/home/z/.cache/yarn/v4
+yarn cache dir
+# 改变 yarn 缓存路径。默认为 undefined。
+yarn config set cache-folder "目录"
+
+yarn cache clean
+yarn cache list
+
+
+
+
 ## React examples
 
 git config --global user.name "prettykernel"
@@ -34,7 +67,7 @@ umi -v
 
 
 
-git clone git@github.com:prettykernel/study.git && cd study
+git clone git@github.com:prettykernel/React_demos.git && cd React_demos
 
 编写代码
 
@@ -66,6 +99,7 @@ umi dev
 # 然后，自动执行 Webpack，编译出三个文件 index.html，umi.css，umi.js，并写入 dist/ 中。
 umi build
 
+# cmd 中执行 tree /F pages
 tree .
 .
 ├── dist
@@ -78,39 +112,42 @@ tree .
     ├── users.css
     └── users.js
 
+发布前，可以通过 serve 做本地验证，结果和 umi dev 一致：
+npm i serve now -g --registry=https://registry.npm.taobao.org
+serve -v
+now -v
+serve ./dist
+
+本地验证完，可以使用 now(Global Serverless Deployments，https://zeit.co/now) 演示部署(可能需要翻墙执行)：
+now ./dist
+
+# umi 内置了基于 jest 的测试工具 umi-test
+Options:
+    --coverage                    indicates that test coverage information should be collected and reported in the output
+    --collectCoverageFrom=<glob>  a glob pattern relative to matching the files that coverage info needs to be collected from, e.g, --collectCoverageFrom=src/**/*.js
+    --detectLeaks                 debug memory leaks
+umi test
+
+# 使用 umi inspect 列出配置项的内容用以检查
+Options:
+    --mode                specify env mode (development or production, default is development)
+    --rule <ruleName>     inspect a specific module rule
+    --plugin <pluginName> inspect a specific plugin
+    --rules               list all module rule names
+    --plugins             list all plugin names
+    --verbose             show full function definitions in output
+umi inspect
 
 
 
-# npm 缓存路径。默认是 /home/z/.npm。
-npm config get cache
 
-# 默认输出 /usr。npm i -g 会将包安装在该目录下的 lib/node_modules/ 子目录中。
-npm config get prefix
+pages/ 是页面所在的目录，umi 约定 pages/ 下所有的 js 文件即路由。
+pages/.umi/ 是 umi 的临时目录，可以在这里做一些验证，但不要直接在这里修改代码，umi 重启或 pages/ 下的文件修改后，都会重新生成 pages/.umi/ 下的文件。
 
 
 
-
-# yarn global add 的安装目录，不受 npm config set prefix 影响。默认是 /home/z/.config/yarn/global。
-# 执行 yarn global add umi，会将 umi 包及其所有依赖的包都安装到 /home/z/.config/yarn/global/node_modules/ 下。
-# npm 会把依赖的包安装到 /usr/lib/node_modules/npm/node_modules/ 下。
-yarn global dir
-
-# 可执行文件的软链接，受 npm config set prefix 影响。输出 /home/z/global_node_modules/bin
-# yarn 虽然会把全局包安装到 yarn global dir 制定的目录，但会在 `npm config set prefix`/bin 下生成安装的包中包含的所有可执行文件的符号链接。
-yarn global bin
-
-# 改变 yarn global add 的安装目录。默认为 undefined。
-# yarn global add 会在该目录下生成 node_modules\.bin 目录
-yarn config set global-folder "目录"
-
-# yarn 缓存路径。/home/z/.cache/yarn/v4
-yarn cache dir
-# 改变 yarn 缓存路径。默认为 undefined。
-yarn config set cache-folder "目录"
-
-yarn cache clean
-yarn cache list
-
+return 后不能用 \。
+JSX 中不能用 // 或 /**/ 注释，只能用 {/**/}。
 
 
 
