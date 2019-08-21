@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 
 class MyButton extends Component {
-  
   state = {
     count: 0,
   }
@@ -64,7 +63,7 @@ JSX 中使用双引号，其它地方使用单引号。
 
 标签属性 class 是 JavaScript 的关键字，在 JSX 中用 className 代替，for 属性用 htmlFor 代替。
 
-标签内容和标签属性都可以使用 {} 表达式。
+标签名和标签属性都可以使用 {} 表达式。
 
 与普通的 HTML 标签一样，组件内部可以嵌套其它组件，最后构成一个组件树。数据在组件树内自上往下流动。
 
