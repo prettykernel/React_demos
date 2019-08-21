@@ -55,20 +55,6 @@ git push -u origin master
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # npm 缓存路径。默认是 /home/z/.npm。
 npm config get cache
 
