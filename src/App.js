@@ -33,8 +33,21 @@ function App() {
       点赞按钮的内部用 this.props.wordings.likeText 获取参数。
     */}
     <受控组件 wordings={{likedText: '已赞', unlikedText: '赞'}} />
+
+    {/* 往组件内部传入函数作为参数 */}
+    <受控组件
+      wordings={{likedText: '已赞', unlikedText: '赞'}}
+      onClick={() => console.log('Click on like button!')}
+    />
+
+
+
   </>
 }
 
 export default App;
+
+
+
+
 

@@ -13,7 +13,7 @@ export default class 受控组件 extends Component {
     const likedText = this.props.likedText || '取消'
     const unlikedText = this.props.unlikedText || '点赞'
     return (
-      <button onClick={this.handleClick}>
+      <button onClick={this.props.onClick || this.handleClick}>
         {this.state.isLiked ? likedText : unlikedText} 👍
       </button>
     )
