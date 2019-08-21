@@ -31,7 +31,7 @@ git push -u origin dev
 
 
 
-git remote remove origin >/dev/null
+git remote remove origin >/dev/nulls
 git remote add origin git@github.com:prettykernel/react_demos.git
 git remote -v
 
