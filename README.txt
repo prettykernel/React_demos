@@ -1,3 +1,74 @@
+git clone git@github.com:prettykernel/react_demos.git && cd react_demos
+
+编写代码
+
+git add . && git commit -m ' '
+
+再次编写代码
+
+git add . && git commit -m ' '
+
+git push    # 可能需要手工解决冲突
+
+
+
+master 只用于合并，不用于开发新功能。
+
+一、开发分支 dev 上的代码达到上线的标准后，要合并到 master 分支
+git checkout dev
+git pull
+git checkout master
+git merge dev
+git push -u origin master
+
+二、当 master 代码改动了，需要更新开发分支 dev 上的代码
+git checkout master 
+git pull 
+git checkout dev
+git merge master 
+git push -u origin dev
+
+
+
+
+git remote remove origin >/dev/null
+git remote add origin git@github.com:prettykernel/react_demos.git
+git remote -v
+
+git checkout -b dev
+
+上一次 git push 成功后，或者初次 git clone 后，本地代码和远程代码一致。
+
+进行一些本地开发。
+
+git add . && git commit -m 'commit log'
+
+# 看看是否有冲突，即是否有其他人和我修改了同一个文件
+git pull
+
+如果有冲突，则根据 git pull 的报错信息，打开冲突文件，手工解决冲突。
+
+git add . && git commit -m 'commit log'
+
+git push -u origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # npm 缓存路径。默认是 /home/z/.npm。
 npm config get cache
 
@@ -65,18 +136,7 @@ npm cache clean -f && npm cache verify
 umi -v
 
 
-git remote remove origin
-git remote add origin git@github.com:prettykernel/react_demos.git
-git remote -v
-git add . && git commit -m 'commit log'
 
-git clone git@github.com:prettykernel/react_demos.git && cd react_demos
-
-编写代码
-
-git add . && git commit -m ' '
-
-git push
 
 mkdir myapp && cd myapp
 

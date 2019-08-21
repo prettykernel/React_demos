@@ -25,7 +25,6 @@ class MyButton extends Component {
       {/* isGoodWord 为 true 时，显示 <strong>is good</strong>，否则就隐藏 */}
       <h1>{isGoodWord ? <strong>good</strong> : badWord} </h1>
 
-
     </>
   }
 }
