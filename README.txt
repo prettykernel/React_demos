@@ -19,13 +19,15 @@ git checkout dev
 git pull
 git checkout master
 git merge dev
+git add . && git commit -m ' '
 git push -u origin master
 
 二、当 master 代码改动了，需要更新开发分支 dev 上的代码
 git checkout master 
 git pull 
 git checkout dev
-git merge master 
+git merge master
+git add . && git commit -m ' '
 git push -u origin dev
 
 
