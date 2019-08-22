@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 
 export default class 受控组件 extends Component {
@@ -19,3 +19,4 @@ export default class 受控组件 extends Component {
     )
   }
 }
+

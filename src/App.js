@@ -1,8 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import MyButton from './MyButton';
-import 受控组件 from './受控组件';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import MyButton from './MyButton'
+import 受控组件 from './受控组件'
+import {ItemList} from './ItemList'
 
 function App() {
   return <>
@@ -40,12 +41,13 @@ function App() {
       onClick={() => console.log('Click on like button!')}
     />
 
-
+    <br/>
+    <ItemList />
 
   </>
 }
 
-export default App;
+export default App
 
 
 

@@ -17,9 +17,11 @@ master 只用于合并，不用于开发新功能。
 一、开发分支 dev 上的代码达到上线的标准后，要合并到 master 分支
 git checkout dev
 git pull
+继续在 dev 分支上开发新功能。
+git add . && git commit -m 'ok'
 git checkout master
 git merge dev
-git add . && git commit -m ' '
+# 不用再次 git add . && git commit -m ' '
 git push -u origin master
 
 二、当 master 代码改动了，需要更新开发分支 dev 上的代码
