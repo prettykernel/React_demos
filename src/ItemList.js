@@ -8,6 +8,7 @@ const users = [
   { id: 3, username: 'Lucy', age: 20, gender: 'female' },
 ]
 
+
 // 把渲染单个用户的结构抽象为一个组件，通过 props 把 user 数组作为组件的配置参数
 // 解构赋值的语义是：如果调用 User 组件时传入的 props 中包含 user 属性，就从 user 中解构出 username, age, gender，相当于：
 // const username = props.user.username

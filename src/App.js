@@ -4,6 +4,7 @@ import './App.css'
 import MyButton from './MyButton'
 import 受控组件 from './受控组件'
 import {ItemList} from './ItemList'
+import {LessonList, lessons} from './LessonList'
 
 function App() {
   return <>
@@ -43,6 +44,10 @@ function App() {
 
     <br/>
     <ItemList />
+
+    <br/>
+    <LessonList lessons={lessons} />
+
 
   </>
 }
