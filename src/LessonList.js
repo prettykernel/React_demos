@@ -9,12 +9,10 @@ export const lessons = [
 ]
 
 
-const Lesson = ({ lesson: {title, description}, index }) => {
-  return <div onClick={() => console.log(`${index} - ${title}`)}>
-    <h1>{`${index} - ${title}`}</h1>
-    <p>{description}</p>
-  </div>
-}
+const Lesson = ({ lesson: {title, description}, index }) => <>
+  <h1 onClick={() => console.log(`${index} - ${title}`)}>{`${index} - ${title}`}</h1>
+  <p>{description}</p>
+</>
 
 
 export const LessonList = ({ lessons }) => <>

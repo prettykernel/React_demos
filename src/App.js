@@ -5,6 +5,11 @@ import MyButton from './MyButton'
 import 受控组件 from './受控组件'
 import {ItemList} from './ItemList'
 import {LessonList, lessons} from './LessonList'
+import CommentApp from './CommentBox'
+import DefaultPropsAndPropTypes from './DefaultPropsAndPropTypes'
+import ComponentLifeCycle from './ComponentLifeCycle'
+import GitHubAPI from './GitHubAPI'
+
 
 function App() {
   return <>
@@ -48,6 +53,16 @@ function App() {
     <br/>
     <LessonList lessons={lessons} />
 
+    <br/>
+    <DefaultPropsAndPropTypes />
+
+    <br/>
+    <ComponentLifeCycle />
+
+    <br/>
+    <CommentApp />
+
+    <GitHubAPI />
 
   </>
 }

@@ -14,14 +14,13 @@ const users = [
 // const username = props.user.username
 // const age = props.user.age
 // const gender = props.user.gender
-const User = ({ user: { username, age, gender }}) => {
-  return <>
-    <div>姓名：{username}</div>
-    <div>年龄：{age}</div>
-    <div>性别：{gender}</div>
-    <hr/>
-  </>
-}
+const User = ({ user: { username, age, gender }}) => <>
+  <div>姓名：{username}</div>
+  <div>年龄：{age}</div>
+  <div>性别：{gender}</div>
+  <hr/>
+</>
+
 
 // ItemList 可以渲染任何元素列表，相当于一个泛型容器
 // export 后不加 default 时，App.js 中 import 时，ItemList 两侧需要加大括号
