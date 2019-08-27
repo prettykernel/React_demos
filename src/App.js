@@ -9,7 +9,7 @@ import CommentApp from './CommentBox'
 import DefaultPropsAndPropTypes from './DefaultPropsAndPropTypes'
 import ComponentLifeCycle from './ComponentLifeCycle'
 import GitHubAPI from './GitHubAPI'
-import Clock from './Clock'
+import ClockViewer from './Clock'
 
 
 function App() {
@@ -61,7 +61,7 @@ function App() {
     <ComponentLifeCycle />
 
     <br/>
-    <Clock />
+    <ClockViewer />
 
     <br/>
     <CommentApp />
