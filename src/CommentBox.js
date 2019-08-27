@@ -8,7 +8,7 @@ class Comment extends Component {
     static propTypes = {
         comment: PropTypes.object.isRequired,
         index: PropTypes.number,
-        onDeleteComment: PropTypes.func
+        onDeleteComment: PropTypes.func,
     }
 
     constructor(props) {

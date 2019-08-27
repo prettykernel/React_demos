@@ -37,7 +37,6 @@ PropTypes.object
 PropTypes.string
 PropTypes.node
 PropTypes.element
-
 更多类型及其用法，参考官方文档：https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html。
 
 
