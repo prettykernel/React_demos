@@ -11,7 +11,9 @@ git add . && git commit -m ' '
 
 git add . && git commit -m ' '
 
-git push    # 可能需要手工解决冲突
+# 可能需要手工解决冲突
+# 推送失败时，可以尝试在 Chrome 中登陆 GitHub 后再试
+git push
 
 
 
