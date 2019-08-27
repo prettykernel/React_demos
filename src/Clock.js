@@ -8,7 +8,9 @@ class Clock extends Component {
     date: new Date().toLocaleString('zh-CN'),
   }
 
-  // 一些组件启动的动作，例如 Ajax 请求、定时器启动等，可以在 componentDidMount 里进行
+  // 一些组件启动的动作，例如 Ajax 请求、定时器启动等，可以在 componentDidMount 里进行。
+  // 有些组件的启动工作依赖 DOM ，例如动画的启动，而 constructor 时组件还没挂载完成，所以没法进行这些启动工作，
+  // 可以把这些操作放在 componentDidMount 中。
   componentDidMount () {
     // 每隔 1 秒更新时钟的 state.date
     // new Date() 返回一个对象，必须转为字符串，否则 JSX 无法正常渲染
