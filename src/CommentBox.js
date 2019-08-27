@@ -11,10 +11,7 @@ class Comment extends Component {
         onDeleteComment: PropTypes.func,
     }
 
-    constructor(props) {
-        super(props)
-        this.state = { timeString: '' }
-    }
+    state = { timeString: '' }
 
     componentDidMount() {
         this._updateTimeString()
@@ -111,12 +108,9 @@ class CommentInput extends Component {
         onSubmit: PropTypes.func
     }
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            username: '',
-            content: ''
-        }
+    state = {
+        username: '',
+        content: '',
     }
 
     componentDidMount() {
@@ -194,10 +188,7 @@ class CommentInput extends Component {
 
 
 export default class CommentApp extends Component {
-    constructor(props) {
-        super(props)
-        this.state = { comments: [] }
-    }
+    state = { comments: [] }
 
     componentDidMount() {
         this._loadComments()
