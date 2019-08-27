@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import MyButton from './MyButton'
+import {MyButton} from './MyButton'
 import 受控组件 from './受控组件'
 import {ItemList} from './ItemList'
 import {LessonList, lessons} from './LessonList'
@@ -9,6 +9,7 @@ import CommentApp from './CommentBox'
 import DefaultPropsAndPropTypes from './DefaultPropsAndPropTypes'
 import ComponentLifeCycle from './ComponentLifeCycle'
 import GitHubAPI from './GitHubAPI'
+import Clock from './Clock'
 
 
 function App() {
@@ -58,6 +59,9 @@ function App() {
 
     <br/>
     <ComponentLifeCycle />
+
+    <br/>
+    <Clock />
 
     <br/>
     <CommentApp />

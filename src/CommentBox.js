@@ -91,8 +91,7 @@ class CommentList extends Component {
     }
 
     render() {
-        return (
-            <div>
+        return <>
                 {this.props.comments.map((comment, i) =>
                     <Comment
                         comment={comment}
@@ -100,8 +99,7 @@ class CommentList extends Component {
                         index={i}
                         onDeleteComment={this.handleDeleteComment.bind(this)} />
                 )}
-            </div>
-        )
+        </>
     }
 }
 

@@ -4,6 +4,9 @@ git clone git@github.com:prettykernel/react_demos.git && cd react_demos
 
 git add . && git commit -m ' '
 
+// 如果写错了 commit log，可以 git reset --soft HEAD~1
+// --hard 表示撤销 commit 并回退本地代码。--soft 表示撤销 commit 但不回退代码。
+
 再次编写代码
 
 git add . && git commit -m ' '

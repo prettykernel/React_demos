@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 
-export default class GitHubAPI extends React.Component {
+export default class GitHubAPI extends Component {
   state = {
     loading: true,
     error: null,
     data: null,
   }
 
+  // React 中的 async/await 生命周期函数 https://zhuanlan.zhihu.com/p/30401565
+  //
   // JSON 数据在线生成：
   //   jsonplaceholder.typicode.com
   //   myjson.com

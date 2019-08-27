@@ -17,7 +17,7 @@ class MyButton extends Component {
     const badWord = <span>bad</span>
 
     return <>
-      <button onClick={this.handleClick}>click me {this.state.count}</button>
+      <button onClick={this.handleClick}>click me {this.state.count} times</button>
 
       <div>如果表达式返回 null，则冒号后不渲染任何内容：{null}</div>
 
@@ -28,12 +28,9 @@ class MyButton extends Component {
   }
 }
 
-
-export default MyButton
-
-
-
-
+export {
+  MyButton,
+}
 
 
 
