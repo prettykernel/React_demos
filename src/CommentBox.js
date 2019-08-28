@@ -10,6 +10,10 @@ class CommentInput extends Component {
 
     textareaRef = React.createRef()
 
+    inputRef = React.createRef()
+
+    cachedLastUsername = null
+
     state = {
         username: '',
         content: '',
@@ -21,7 +25,8 @@ class CommentInput extends Component {
                 <div className='comment-field'>
                     <span className='comment-field-name'>用户名：</span>
                     <div className='comment-field-input'>
-                        <input 
+                        <input
+                            ref={this.inputRef}
                             value={this.state.username}
                             onBlur={this.handleUsernameBlur}
                             onChange={this.handleUsernameChange} />
@@ -43,26 +48,37 @@ class CommentInput extends Component {
         )
     }
 
+    /* TODO 应该有一个是否匿名的选择框
+       如果用户名为空，聚焦到用户名
+       否则，聚焦到文本框
+       
+    */
     componentDidMount() {
-        this._loadUsername()
-        // 加载完成时自动聚焦
-        this.textareaRef.current.focus()
-    }
-
-    _loadUsername() {
-        const username = localStorage.getItem('username')
+        const username =  this._loadUsername()
         if (username) {
-            this.setState({ username })
+            if (username !== this.cachedLastUsername)  {
+                this.setState({ username })
+                this._saveUsername(username) 
+            }
+            // 加载完成时自动聚焦
+            this.textareaRef.current.focus()
+        } else {
+            this.inputRef.current.focus()
         }
     }
 
+    _loadUsername() {
+        return localStorage.getItem('username')
+    }
+ 
     _saveUsername(username) {
+        this.cachedLastUsername = username
         localStorage.setItem('username', username)
     }
 
-    // 离开文本框时
+    // 离开用户名 <input> 框时
     handleUsernameBlur = (event) => {
-        this._saveUsername(event.target.value)
+        if (this.state.username && this.state.username !== this.cachedLastUsername) this._saveUsername(event.target.value)
     }
 
     handleUsernameChange = (event) => {
@@ -110,12 +126,12 @@ class Comment extends Component {
     _updateTimeString = () => {
         const duration = (Date.now() - this.props.comment.createdTime) / 1000
         this.setState({ timeString:
-            duration < 60       ? `${Math.round(Math.max(duration, 1))} 秒前` :
-            duration < 3600     ? `${Math.round(duration / 60)} 分钟前` :
-            duration < 86400    ? `${Math.round(duration / 3600)} 小时前` :
-            duration < 2592000  ? `${Math.round(duration / 86400)} 天前` :
-            duration < 31536000 ? `${Math.round(duration / 2592000)} 月前` :
-                                  `${Math.round(duration / 31536000)} 年前`
+            duration < 60       ? `${Math.round(Math.max(duration, 1))} 秒前发布` :
+            duration < 3600     ? `${Math.round(duration / 60)} 分钟前发布` :
+            duration < 86400    ? `${Math.round(duration / 3600)} 小时前发布` :
+            duration < 2592000  ? `${Math.round(duration / 86400)} 天前发布` :
+            duration < 31536000 ? `${Math.round(duration / 2592000)} 月前发布` :
+                                  `${Math.round(duration / 31536000)} 年前发布`
         })
     }
 
