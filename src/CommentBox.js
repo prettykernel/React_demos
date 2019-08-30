@@ -54,7 +54,7 @@ class CommentInput extends Component {
        
     */
     componentDidMount() {
-        const username =  this._loadUsername()
+        const username = this._loadUsername()
         if (username) {
             if (username !== this.cachedLastUsername)  {
                 this.setState({ username })
