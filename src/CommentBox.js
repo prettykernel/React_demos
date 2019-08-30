@@ -60,7 +60,6 @@ class CommentInput extends Component {
                 this.setState({ username })
                 this._saveUsername(username) 
             }
-            // 加载完成时自动聚焦
             this.textareaRef.current.focus()
         } else {
             this.inputRef.current.focus()
@@ -78,7 +77,9 @@ class CommentInput extends Component {
 
     // 离开用户名 <input> 框时
     handleUsernameBlur = (event) => {
-        if (this.state.username && this.state.username !== this.cachedLastUsername) this._saveUsername(event.target.value)
+        if (this.state.username && this.state.username !== this.cachedLastUsername) {
+            this._saveUsername(event.target.value)
+        }
     }
 
     handleUsernameChange = (event) => {
