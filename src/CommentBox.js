@@ -85,6 +85,7 @@ class CommentInput extends Component {
     // 离开用户名 <input> 框时
     handleUsernameBlur = (event) => {
         if (this.state.username && this.state.username !== this.cachedLastUsername) {
+            // 不需要调用 this.setState({ username })，因为前面触发的 onChange 事件已经调用过
             this._saveUsername(event.target.value)
         }
     }
