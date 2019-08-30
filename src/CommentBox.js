@@ -12,6 +12,7 @@ class CommentInput extends Component {
 
     inputRef = React.createRef()
 
+    // 上次发表评论时使用的用户名
     cachedLastUsername = null
 
     state = {
@@ -48,20 +49,26 @@ class CommentInput extends Component {
         )
     }
 
-    /* TODO 应该有一个是否匿名的选择框
-       如果用户名为空，聚焦到用户名
-       否则，聚焦到文本框
-       
+    /*
+       如果用户名为空，聚焦到用户名。否则，聚焦到文本框。
+       TODO 应该有一个是否匿名的选择框，匿名时使用 anonymous 作为用户名。
     */
     componentDidMount() {
         const username = this._loadUsername()
         if (username) {
+            // 情况一：
+            //   每次刷新页面时，this.cachedLastUsername 总是为 null。
+            //   但第一次设置 username 之后，user 就不再会是 null。
+            // 情况二：
+            //   用户使用另一个用户名登陆，即修改了用户名
             if (username !== this.cachedLastUsername)  {
+                console.log(username, this.cachedLastUsername)
                 this.setState({ username })
                 this._saveUsername(username) 
             }
             this.textareaRef.current.focus()
         } else {
+            // 第一次使用评论功能时，引导用户先设置用户名
             this.inputRef.current.focus()
         }
     }
@@ -148,12 +155,11 @@ class Comment extends Component {
 
     // comments.splice(index, 1)
     handleDeleteComment = () => {
-        if (this.props.onDeleteComment) {
-            this.props.onDeleteComment(this.props.index)
-        }
+        this.props.onDeleteComment(this.props.index)
     }
 
-    // 用户名：内容
+    // 评论的输出格式：
+    //   用户名：内容
     render() {
         const { username, content } = this.props.comment
         return (
@@ -187,9 +193,7 @@ class CommentList extends Component {
     }
 
     handleDeleteComment = (index) => {
-        if (this.props.onDeleteComment) {
-            this.props.onDeleteComment(index)
-        }
+        this.props.onDeleteComment(index)
     }
 
     render() {
