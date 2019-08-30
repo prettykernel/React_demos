@@ -109,8 +109,6 @@ class CommentInput extends Component {
 }
 
 
-
-// 用法：<Comment comment={} index={} onDeleteComment={} />
 class Comment extends Component {
     static propTypes = {
         comment: PropTypes.object.isRequired,
@@ -180,8 +178,6 @@ class Comment extends Component {
 }
 
 
-
-
 class CommentList extends Component {
     static propTypes = {
         comments: PropTypes.array.isRequired,
@@ -198,13 +194,9 @@ class CommentList extends Component {
 
     render() {
         return <>
-                {this.props.comments.map((comment, i) =>
-                    <Comment
-                        key={i}
-                        comment={comment}
-                        index={i}
-                        onDeleteComment={this.handleDeleteComment} />
-                )}
+            {this.props.comments.map((comment, i) =>
+                <Comment key={i} comment={comment} index={i} onDeleteComment={this.handleDeleteComment} />
+            )}
         </>
     }
 }
