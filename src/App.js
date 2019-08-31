@@ -10,6 +10,7 @@ import DefaultPropsAndPropTypes from './DefaultPropsAndPropTypes'
 import ComponentLifeCycle from './ComponentLifeCycle'
 import GitHubAPI from './GitHubAPI'
 import ClockViewer from './Clock'
+import Tabs from './Tabs'
 //import {} from './RefDemo'
 
 
@@ -64,14 +65,17 @@ export default () => <>
   <ClockViewer />
 
   <br/>
+  <Tabs defaultTabIndex={1} />
+
+  <br/>
+
+
 
 
   <br/>
   <CommentApp />
 
   <GitHubAPI />
-
-
 </>
 
 
