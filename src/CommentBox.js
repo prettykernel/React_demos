@@ -62,7 +62,7 @@ class CommentInput extends Component {
             // 情况二：
             //   用户使用另一个用户名登陆，即修改了用户名
             if (username !== this.cachedLastUsername)  {
-                console.log(username, this.cachedLastUsername)
+                // console.log(username, this.cachedLastUsername)
                 this.setState({ username })
                 this._saveUsername(username) 
             }
