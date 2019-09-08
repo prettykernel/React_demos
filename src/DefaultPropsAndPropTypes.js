@@ -51,7 +51,7 @@ PropTypes.element
 
 class Input extends Component {
   static propTypes = {
-    onSetNum: PropTypes.func.isRequired
+    onSetNum: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
